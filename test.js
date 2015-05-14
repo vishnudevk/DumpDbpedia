@@ -20,9 +20,9 @@ processResultJson =  function(response){
     resultarray.forEach(
     function(row) {
         var newRow = {};
-        //newRow.name = row.company_name.value;
+        newRow.name = row.company_name.value;
         newRow.url = row.homepage.value;
-        //newRow.description = row.abstract.value;
+        newRow.description = row.abstract.value;
         
         //columns not having values
         //newRow.upvotes
