@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OD project</title>
+    <script src="js/jquery.js"></script>
+    <script src="test.js"></script>
+      
+  </head>
+  <body ng-app="odIntegrator">
+    <section id="alert-container"></section>
+    <section class="container">
+      <nav ng-controller="Navigation">
+        <ul class="nav nav-pills">
+          <li ng-class="{active: navItem == 'home'}"><a href="/">Home</a></li>
+          <li ng-class="{active: navItem == 'objectdefinitions'}"><a href="/objectdefinitions">Schema</a></li>
+          <li ng-class="{active: navItem == 'sources'}"><a href="/sources">Sources</a></li>
+          <li ng-class="{active: navItem == 'rawquery'}"><a href="/data/raw">Raw Query</a></li>
+          <li ng-class="{active: navItem == 'consolidatedquery'}"><a href="/data/consolidated">Consolidated Query</a></li>
+          <li class="disabled"><a href="/recommendation/recommendations">Recommendations</a></li>
+        </ul>
+      </nav>
+      <div ng-view></div>
+    </section>
+  </body>
+</html>
