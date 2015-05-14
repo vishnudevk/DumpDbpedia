@@ -8,7 +8,7 @@ select  ?homepage ?abstract ?product ?location ?thumbnail   (group_concat(?compa
 where {
     ?company dcterms:subject category:Cloud_computing_providers.
     
-    ?company rdfs:label ?company_name.
+    ?company foaf:name ?company_name.
     ?company foaf:homepage ?homepage.
     ?company dbpedia-owl:abstract ?abstract.
     Optional {
@@ -28,30 +28,6 @@ FILTER (langMatches(lang(?abstract),"en"))
     FILTER (langMatches(lang(?locationLabel),"en"))  
 }
 GROUP BY  ?homepage ?abstract ?product ?location ?thumbnail 
-
-
-
-//json to be created
-{
-    "_id" : ObjectId("555335a60537cd14040c149f"),
-    "name" : "Azmazon web service",
-    "abbreviated" : "AWS",
-    "description" : "this is one of the major cloud provider we have so far.",
-    "url" : "http://amazon.com",
-     "createdOn" : ISODate("2015-05-13T11:29:42.878Z"),
-    "upvotes" : 0,
-    "locations" : [ 
-        "Ukraine", 
-        "United States"
-    ],
-    "services" : [ 
-        "paas", 
-        "saas", 
-        "dbaas"
-    ],
-    "__v" : 6
-}
-
 
 
 

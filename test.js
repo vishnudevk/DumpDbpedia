@@ -1,5 +1,5 @@
 $.ajax({
-          url: "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select++%3Fhomepage+%3Fabstract+%3Fproduct+%3Flocation+%3Fthumbnail+++%28group_concat%28%3Fcompany_name%3Bseparator%3D%22%2C%22%29+as+%3Fcompany_name%29+%28group_concat%28%3FproductLabel+%3Bseparator%3D%22%2C%22%29+as+%3FproductLabel%29++%28group_concat%28%3FlocationLabel+%3Bseparator%3D%22%2C%22%29+as+%3FlocationLabel%29+%0D%0Awhere+%7B%0D%0A++++%3Fcompany+dcterms%3Asubject+category%3ACloud_computing_providers.++%0D%0A++++%3Fcompany+rdfs%3Alabel+%3Fcompany_name.%0D%0A++++%3Fcompany+foaf%3Ahomepage+%3Fhomepage.%0D%0A++++%3Fcompany+dbpedia-owl%3Aabstract+%3Fabstract.%0D%0A++++Optional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Aproduct+%3Fproduct.%0D%0A++++++++%3Fproduct+rdfs%3Alabel+%3FproductLabel+.%0D%0A++++%7D%0D%0A++++Optional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Alocation+%3Flocation.%0D%0A++++++++%3Flocation+rdfs%3Alabel+%3FlocationLabel+.%0D%0A++++%7D%0D%0AOptional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Athumbnail+%3Fthumbnail.%0D%0A++++++++++%7D%0D%0A%0D%0AFILTER+%28langMatches%28lang%28%3Fabstract%29%2C%22en%22%29%29+%0D%0A++++FILTER+%28langMatches%28lang%28%3FproductLabel%29%2C%22en%22%29%29+%0D%0A++++FILTER+%28langMatches%28lang%28%3FlocationLabel%29%2C%22en%22%29%29++%0D%0A%7D%0D%0AGROUP+BY++%3Fhomepage+%3Fabstract+%3Fproduct+%3Flocation+%3Fthumbnail+&format=application%2Fsparql-results%2Bjsonp&timeout=30000&debug=on",
+          url: "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select++%3Fhomepage+%3Fabstract+%3Fproduct+%3Flocation+%3Fthumbnail+++%28group_concat%28%3Fcompany_name%3Bseparator%3D%22%2C%22%29+as+%3Fcompany_name%29+%28group_concat%28%3FproductLabel+%3Bseparator%3D%22%2C%22%29+as+%3FproductLabel%29++%28group_concat%28%3FlocationLabel+%3Bseparator%3D%22%2C%22%29+as+%3FlocationLabel%29%0D%0Awhere+%7B%0D%0A++++%3Fcompany+dcterms%3Asubject+category%3ACloud_computing_providers.%0D%0A++++%0D%0A++++%3Fcompany+foaf%3Aname+%3Fcompany_name.%0D%0A++++%3Fcompany+foaf%3Ahomepage+%3Fhomepage.%0D%0A++++%3Fcompany+dbpedia-owl%3Aabstract+%3Fabstract.%0D%0A++++Optional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Aproduct+%3Fproduct.%0D%0A++++++++%3Fproduct+rdfs%3Alabel+%3FproductLabel+.%0D%0A++++%7D%0D%0A++++Optional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Alocation+%3Flocation.%0D%0A++++++++%3Flocation+rdfs%3Alabel+%3FlocationLabel+.%0D%0A++++%7D%0D%0AOptional+%7B%0D%0A++++++++%3Fcompany+dbpedia-owl%3Athumbnail+%3Fthumbnail.%0D%0A++++++++++%7D%0D%0A%0D%0AFILTER+%28langMatches%28lang%28%3Fabstract%29%2C%22en%22%29%29%0D%0A++++FILTER+%28langMatches%28lang%28%3FproductLabel%29%2C%22en%22%29%29%0D%0A++++FILTER+%28langMatches%28lang%28%3FlocationLabel%29%2C%22en%22%29%29++%0D%0A%7D%0D%0AGROUP+BY++%3Fhomepage+%3Fabstract+%3Fproduct+%3Flocation+%3Fthumbnail+&format=application%2Fsparql-results%2Bjsonp",
  
           jsonp: "callback",
           // tell jQuery we're expecting JSONP
@@ -20,9 +20,9 @@ processResultJson =  function(response){
     resultarray.forEach(
     function(row) {
         var newRow = {};
-        newRow.name = row.company_name.value;
+        //newRow.name = row.company_name.value;
         newRow.url = row.homepage.value;
-        newRow.description = row.abstract.value;
+        //newRow.description = row.abstract.value;
         
         //columns not having values
         //newRow.upvotes
@@ -48,7 +48,8 @@ processResultJson =  function(response){
         }
     });
     
-    alert(JSON.stringify(newresultarray));
+    document.getElementsByClassName("someClass")[0].innerHTML=JSON.stringify(newresultarray);
+    //alert(JSON.stringify(newresultarray));
     
 }
 
