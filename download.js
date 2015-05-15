@@ -69,7 +69,7 @@ processResultJson =  function(response){
 
     //document.getElementsByClassName("someClass")[0].innerHTML=JSON.stringify(newresultarray);
     console.log(JSON.stringify(newresultarray));
-    //alert(JSON.stringify(newresultarray));
+    //console.log('finished running');
 
 }
 
@@ -87,6 +87,20 @@ function containsHomepageInArray(array,homepage){
     }
 
 }
+
+
+//mongo db related codes
+// Retrieve
+var MongoClient = require('mongodb').MongoClient;
+console.log('finished running1');
+
+// Connect to the db
+MongoClient.connect("mongodb://localhost:49835/nodetest2", function(err, db) {
+  if(!err) {
+    console.log("We are connected");
+    console.log(db);
+  }
+});
 
 
 

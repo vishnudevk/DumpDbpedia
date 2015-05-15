@@ -1,0 +1,32 @@
+{
+  "name": "DumpDBpedia",
+  "version": "1.0.0",
+  "description": "An example program to dump dbpedia data to mongodb",
+  "author": "Vishnudev Kuruvanthodi <vishnudev.kpm@gmail.com>",
+  "contributors": [{
+  "name": "Vishnudev Kuruvanthodi",
+  "email": "vishnudev.kpm@gmail.com"
+}],
+
+ "dependencies": {
+    "mongodb": "2.0.31"
+ },
+  "scripts": {
+    "start": "node download.js",
+    "predeploy": "Starting deploay",
+    "postdeploy": "Ending deployed"
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/vishnudevk/DumpDbpedia.git"
+},
+  "bugs": {
+  "url": "https://github.com/vishnudevk/DumpDbpedia/issues"
+},
+  "keywords": [
+  "dbpedia",
+  "mongodb"
+],
+  "analyze": true,
+  "license": "MIT"
+}
