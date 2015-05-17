@@ -38,8 +38,8 @@ processResultJson =  function(response){
 
     var resultarray = response.results.bindings;
     var newresultarray = new Array;
-    
-    insertRetrivedData(resultarray);
+    console.log(response);
+    //insertRetrivedData(resultarray);
     return ;
     resultarray.forEach(
     function(row) {

@@ -2,6 +2,51 @@
 Create json string in the given format
 
 
+select ?company ?p ?o
+where{
+   ?company ?p ?o
+.
+{
+select ?company where
+{{
+	{
+	?company  dcterms:subject category:Cloud_storage
+	}
+	union{
+	?company  dcterms:subject category:Cloud_applications
+	}
+	union{
+	?company  dcterms:subject category:Cloud_infrastructure
+	}
+	union{
+	?company  dcterms:subject category:Cloud_platforms
+	}
+	union{
+	?company  dcterms:subject category:Free_software_for_cloud_computing
+	}
+	union{
+	?company  dcterms:subject category:Infrastructure_as_a_service
+	}
+	union{
+	?company  dcterms:subject category:Web_hosting
+	}
+	union{
+	?company dcterms:subject category:Cloud_infrastructure
+	}
+	.
+	?company dcterms:subject category:Cloud_computing_providers.
+	}union{
+		?company dbpedia-owl:wikiPageID 32476167
+	}union{
+		?company dbpedia-owl:wikiPageID 19127434
+	}union{
+		?company dbpedia-owl:wikiPageID 37259190
+	}
+}
+}
+
+
+
 Query used
 
 select  ?homepage ?abstract ?product ?location ?thumbnail   (group_concat(?company_name;separator=",") as ?company_name) (group_concat(?productLabel ;separator=",") as ?productLabel)  (group_concat(?locationLabel ;separator=",") as ?locationLabel)

@@ -1,0 +1,42 @@
+select ?company ?company_name ?homepage ?productLabel ?locationLabel ?thumbnail ?abstract
+where{
+ BIND ( Adobe_Marketing_Cloud AS ?company)
+ 
+optional{
+    ?company foaf:name ?company_name
+ }
+optional{
+    ?company rdf:label ?company_name
+ }
+
+optional{
+    ?company foaf:homepage ?homepage.
+}
+
+Optional {
+        ?company dbpedia-owl:product ?product.
+        ?product rdfs:label ?productLabel .
+}
+optional{
+    ?company foaf:name ?productLabel
+ }
+optional{
+    ?company rdf:label ?productLabel
+ }
+Optional {
+        ?company dbpedia-owl:location ?location.
+        ?location rdfs:label ?locationLabel .
+}
+Optional {
+        ?company dbpedia-owl:thumbnail ?thumbnail.
+}
+
+Optional {
+        ?company dbpedia-owl:abstract ?abstract.
+}
+
+
+FILTER (langMatches(lang(?abstract),"en"))
+FILTER (langMatches(lang(?productLabel),"en"))
+FILTER (langMatches(lang(?locationLabel),"en"))  
+}
