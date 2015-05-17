@@ -1,7 +1,7 @@
 # DumpDbpedia
 Create json string in the given format
 
-
+query used to get company list
 select ?company ?p ?o
 where{
    ?company ?p ?o
@@ -45,6 +45,51 @@ select ?company where
 }
 }
 
+
+Query used for getting company details
+
+select ?company ?company_name ?homepage ?productLabel ?locationLabel ?thumbnail ?abstract
+where{
+ BIND ( <http://dbpedia.org/resource/MongoDB_Inc.> AS ?company)
+ 
+optional{
+    ?company foaf:name ?company_name
+ }
+optional{
+    ?company rdf:label ?company_name
+ }
+
+optional{
+    ?company foaf:homepage ?homepage.
+}
+
+Optional {
+        ?company dbpedia-owl:product ?product.
+        ?product rdfs:label ?productLabel .
+}
+optional{
+    ?company foaf:name ?productLabel
+ }
+optional{
+    ?company rdf:label ?productLabel
+ }
+Optional {
+        ?company dbpedia-owl:location ?location.
+        ?location rdfs:label ?locationLabel .
+}
+Optional {
+        ?company dbpedia-owl:thumbnail ?thumbnail.
+}
+
+Optional {
+        ?company dbpedia-owl:abstract ?abstract.
+}
+
+
+FILTER (langMatches(lang(?abstract),"en"))
+FILTER (langMatches(lang(?productLabel),"en"))
+FILTER (langMatches(lang(?locationLabel),"en"))  
+}
 
 
 Query used
